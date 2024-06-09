@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ProyectoCine.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ProyectoCine"
+    xmlns:views="clr-namespace:ProyectoCine.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="ProyectoCine">
+
+    <TabBar>
+        <ShellContent
+            Title="Notes"
+            ContentTemplate="{DataTemplate views:HomePage}"
+            Icon="{OnPlatform 'casaweb.png'}" />
+
+        <ShellContent
+            Title="Historial"
+            ContentTemplate="{DataTemplate views:HistorialPage}"
+            Icon="{OnPlatform 'historialdetransacciones.png'}" />
+    </TabBar>
+
+
+</Shell>

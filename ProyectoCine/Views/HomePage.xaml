@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProyectoCine.Views"
+             x:Class="ProyectoCine.Views.HomePage"
+             Title="HomePage">
+    <StackLayout VerticalOptions="StartAndExpand" Padding="10">
+
+       
+        <Label Text="Hola, disfruta lo mejor del cine" FontSize="Large" HorizontalOptions="Center" />
+
+        <SearchBar
+        CancelButtonColor="White"
+        Placeholder="Busqueda"
+        PlaceholderColor="DarkCyan"
+        TextColor="White"
+        VerticalOptions="Center"
+       >
+            
+        </SearchBar>
+
+        <CollectionView ItemsSource="{Binding Peliculas}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10">
+                        <Image Source="{Binding Poster}" HeightRequest="200">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:HomePage}}, Path=BindingContext.PeliculaTappedCommand}" CommandParameter="{Binding .}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="{Binding Title}" FontSize="Medium" HorizontalOptions="Center" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </StackLayout>
+</ContentPage>
