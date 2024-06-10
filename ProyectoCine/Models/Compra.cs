@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoCine.Models
 {
-    public class Compra:Pelicula, INotifyPropertyChanged
+    public class Compra : Pelicula, INotifyPropertyChanged
     {
         private int _ticketCount;
         public int TicketCount
@@ -19,7 +19,7 @@ namespace ProyectoCine.Models
                 {
                     _ticketCount = value;
                     OnPropertyChanged(nameof(TicketCount));
-                    OnPropertyChanged(nameof(TotalPrice)); // También actualiza el precio total
+                    OnPropertyChanged(nameof(TotalPrice));
                 }
             }
         }
@@ -34,14 +34,16 @@ namespace ProyectoCine.Models
                 {
                     _ticketPrice = value;
                     OnPropertyChanged(nameof(TicketPrice));
-                    OnPropertyChanged(nameof(TotalPrice)); // También actualiza el precio total
+                    OnPropertyChanged(nameof(TotalPrice));
                 }
             }
         }
 
         public decimal TotalPrice => TicketCount * TicketPrice;
 
+        public string Filename { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

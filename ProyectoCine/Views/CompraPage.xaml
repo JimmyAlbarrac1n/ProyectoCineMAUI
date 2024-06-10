@@ -10,15 +10,11 @@
         <Label Text="Cantidad de Entradas" FontSize="Medium" />
         <Stepper Minimum="1" Maximum="10" Increment="1" 
                  Value="{Binding TicketCount, Mode=TwoWay}" />
-
         <Label Text="Precio por Entrada" FontSize="Medium" />
         <Label Text="{Binding TicketPrice}" FontSize="Medium" />
-
         <Label Text="Precio Total" FontSize="Medium" />
         <Label Text="{Binding TotalPrice}" FontSize="Large" FontAttributes="Bold" />
-        <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
-            <Button Text="Comprar"
-            Clicked="CompraButton_Clicked" />
-        </Grid>
+        <Button Text="Guardar Compra" Clicked="OnSaveButtonClicked" />
+        <Button Text="Borrar Compra" Clicked="OnDeleteButtonClicked" />
     </StackLayout>
 </ContentPage>
