@@ -7,40 +7,42 @@ using System.Threading.Tasks;
 
 namespace ProyectoCine.Models
 {
-    internal class Historial
+    public class Historial
     {
-           public ObservableCollection<Compra> Compras { get; set; } = new ObservableCollection<Compra>();
-           /*public Compra() =>
-               LoadNotes();
+        public ObservableCollection<Compra> Compras { get; set; } = new ObservableCollection<Compra>();
 
-           public void LoadNotes()
-           {
-               Compras.Clear();
+        public Historial()
+        {
+            LoadPurchases();
+        }
 
-               // Get the folder where the notes are stored.
-               string appDataPath = FileSystem.AppDataDirectory;
+        public void LoadPurchases()
+        {
+            Compras.Clear();
 
-            // Use Linq extensions to load the *.notes.txt files.
-            IEnumerable<Compra> notes = Directory
+            string appDataPath = FileSystem.AppDataDirectory;
 
-                                        // Select the file names from the directory
-                                        .EnumerateFiles(appDataPath, "*.notes.txt")
 
-                                        // Each file name is used to create a new Note
-                                        .Select(filename => new Compra()
-                                        {
-                                            Title = filename,
-                                            TotalPrice = filename
+            IEnumerable<Compra> purchases = Directory
+                .EnumerateFiles(appDataPath, "*.compra.txt")
+                .Select(filename =>
+                {
+                    string[] lines = File.ReadAllLines(filename);
+                    return new Compra
+                    {
+                        Filename = filename,
+                        Title = lines[0],
+                        TicketCount = int.Parse(lines[1]),
+                        TicketPrice = decimal.Parse(lines[2])
+                    };
+                });
 
-                                        });
 
-                                          
+            foreach (Compra purchase in purchases)
+            {
+                Compras.Add(purchase);
+            }
+        }
 
-               // Add each note into the ObservableCollection
-               foreach (Compra note in notes)
-                   Compras.Add(note);
-           }
-
-       }*/
     }
 }
