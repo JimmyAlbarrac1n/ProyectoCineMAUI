@@ -61,4 +61,4 @@ public partial class CompraPage : ContentPage
             await Shell.Current.GoToAsync("..");
         }
     }
-}s
+}
